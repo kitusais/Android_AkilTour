@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:theme="@style/AppTheme.NoActionBar">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleLoginActivity"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/loginSigninPseudoTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="80dp"
+        android:text="@string/loginSigninPseudo"/>
+
+    <EditText
+        android:id="@+id/loginSigninPseudoEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
+        />
+
+    <TextView
+        android:id="@+id/loginSigninPassTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_below="@+id/loginSigninPseudoTv"
+        android:layout_marginTop="20dp"
+        android:text="@string/loginSigninPass"
+        />
+
+    <EditText
+        android:id="@+id/loginSigninPassEt"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@+id/loginSigninPseudoEt"/>
+
+    <Button
+        android:id="@+id/loginSigninLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginSigninPassTv"
+        android:layout_alignRight="@id/loginSigninPassEt"
+        android:layout_marginTop="40dp"
+        android:text="@string/loginSigninLoginBtn"/>
+
+    <TextView
+        android:id="@+id/signinLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginSigninLoginBtn"
+        android:layout_marginTop="40dp"
+        android:text="@string/signinLink"
+        />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Button>
+
+</RelativeLayout>
+

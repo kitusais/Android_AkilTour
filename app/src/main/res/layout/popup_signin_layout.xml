@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/titleSignInPopUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enregistrement"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/SignInPopUpPseudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleSignInPopUp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="@string/loginSigninPseudo"/>
+
+        <EditText
+            android:id="@+id/SignInPopUpPseudoEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleSignInPopUp"
+            android:layout_toRightOf="@id/SignInPopUpPass"/>
+
+        <TextView
+            android:id="@+id/SignInPopUpPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SignInPopUpPseudoEt"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="@string/loginSigninPass"
+            android:linksClickable="true"/>
+        <EditText
+            android:id="@+id/SignInPopUpPassEt"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/SignInPopUpPass"
+            android:layout_below="@id/SignInPopUpPseudoEt"/>
+
+        <TextView
+            android:id="@+id/SingInPopUpPass2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SignInPopUpPass"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="@string/loginSigninPass"
+            android:linksClickable="true"/>
+        <EditText
+            android:id="@+id/SignInPopUpPassEt2"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/SignInPopUpPass"
+            android:layout_below="@id/SignInPopUpPassEt"/>
+
+        <Button
+            android:id="@+id/SignInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/SignInPopUpPassEt2"
+            android:layout_alignRight="@id/SignInPopUpPassEt2"
+            android:text="@string/SignInBtn"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
