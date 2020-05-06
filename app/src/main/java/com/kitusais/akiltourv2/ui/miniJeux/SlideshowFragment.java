@@ -39,6 +39,7 @@ public class SlideshowFragment extends Fragment {
                     ViewModelProviders.of(this).get(SlideshowViewModel.class);
             root = inflater.inflate(R.layout.fragment_double_button, container, false);
             GameDoubleButtonControler.startGame(context,root);
+        //root = inflater.inflate(R.layout.fragment_slideshow, container, false);
 //        }else if(numRandomGame == 2){
 //            slideshowViewModel =
 //                    ViewModelProviders.of(this).get(SlideshowViewModel.class);
@@ -58,6 +59,7 @@ public class SlideshowFragment extends Fragment {
 //            }
 //        });
         Button testButton = root.findViewById(R.id.testButton);
+        // a decommenter pour test ifnlate game
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

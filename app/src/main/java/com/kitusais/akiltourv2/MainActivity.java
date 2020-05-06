@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public static String baseUrl ="http://kitusais.orgfree.com/droid_connect_2/";
+    public static String baseUrl ="http://192.168.1.21/up2net/";
     public static boolean alreadyImported = false;
     public static Player authPlayer;
     public static int numRandomGame = 0;
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         GetGameDAO getGameDAO  =new GetGameDAO(context);
         getGameDAO.execute("random");
+        Intent i = getIntent();
+        if("usedPseudo".equals(i.getStringExtra("error"))){
+            Toast.makeText(context,"pseudo déjà utilisé",Toast.LENGTH_LONG).show();
+        }
         if(authPlayer != null ){
             Intent i1 = new Intent(context, MainAppActivity.class);
             context.startActivity(i1);
@@ -89,13 +94,15 @@ public class MainActivity extends AppCompatActivity {
                         userEntry.add(pass1.getText().toString());
                         userEntry.add(pass2.getText().toString());
                         int[] userEntryLength = {20,20,20};
-                        if(SecurityControler.securityMain(context,userEntry, userEntryLength)) {
+                        if(SecurityControler.securityMain(context,userEntry, userEntryLength) && SecurityControler.checkPassStrengh(context, userEntry.get(1))) {
                             LoginSigninControler.passCheck(context, userEntry.get(0), userEntry.get(1), userEntry.get(2));
+                            //alertDialog.dismiss();
+                            //finish();
                         }
-                        Log.i("--- MainActivity ---","Bonjour "+authPlayer.getPseudo());
+//                        Log.i("--- MainActivity ---","Bonjour "+authPlayer.getPseudo());
 
-                        alertDialog.dismiss();
-                        sayHello();
+//                        alertDialog.dismiss();
+//                        sayHello();
                     }
                 });
             }

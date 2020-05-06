@@ -62,12 +62,18 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/SignInPopUpPass"
             android:layout_below="@id/SignInPopUpPassEt"/>
-
+        <TextView
+            android:id="@+id/controlPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/controlPassword"
+            android:layout_below="@id/SignInPopUpPassEt2"
+            android:textColor="#ff0000"/>
         <Button
             android:id="@+id/SignInBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/SignInPopUpPassEt2"
+            android:layout_below="@id/controlPassword"
             android:layout_alignRight="@id/SignInPopUpPassEt2"
             android:text="@string/SignInBtn"/>
     </RelativeLayout>

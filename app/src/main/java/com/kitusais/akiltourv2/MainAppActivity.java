@@ -39,7 +39,8 @@ public class MainAppActivity extends AppCompatActivity {
 
 
     private AppBarConfiguration mAppBarConfiguration;
-    public static String baseUrl ="http://kitusais.orgfree.com/droid_connect_2/";
+    //public static String baseUrl ="http://kitusais.orgfree.com/droid_connect_2/";
+    public static String baseUrl ="http://192.168.1.21/up2net/";
 //    public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Context context;
     private AlertDialog alertDialog;
@@ -106,6 +107,11 @@ public class MainAppActivity extends AppCompatActivity {
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send)//
                 .setDrawerLayout(drawer)
                 .build();
+        //mAppBarConfiguration = new AppBarConfiguration.Builder(
+        //        R.id.nav_home, R.id.nav_gallery, R.id.nav_gallery,
+         //       R.id.nav_gallery, R.id.nav_gallery, R.id.nav_home)//
+         //       .setDrawerLayout(drawer)
+         //       .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

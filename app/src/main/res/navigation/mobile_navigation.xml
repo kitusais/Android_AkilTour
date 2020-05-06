@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.kitusais.akiltourv2.ui.tools.ToolsFragment"
+        android:name="com.kitusais.akiltourv2.ui.compte.ToolsFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_compte" />
 
     <fragment
         android:id="@+id/nav_share"

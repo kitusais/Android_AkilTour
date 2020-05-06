@@ -48,7 +48,7 @@ public class GalleryFragment extends Fragment {
                 @Override
                 public void onChanged(@Nullable String s) {
                     if (authPlayer != null) {
-                        textView.setText(authPlayer.getPseudo());
+                        textView.setText("Bonjour "+authPlayer.getPseudo());
                     } else {
                         textView.setText("personne logué");
                     }

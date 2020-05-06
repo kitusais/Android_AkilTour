@@ -9,8 +9,8 @@
 
     <string name="menu_home">Calendrier</string>
     <string name="menu_gallery">Accueil</string>
-    <string name="menu_slideshow">Quedal</string>
-    <string name="menu_tools">Mini-jeux</string>
+    <string name="menu_slideshow">Mini-jeux</string>
+    <string name="menu_tools">Mon compte</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="titleLoginActivity">Pour utiliser l\'application\nMerci de vous connecter</string>
@@ -23,4 +23,7 @@
     <string name="gameDoubleButton2">:) Bouotn 2 :)</string>
     <string name="add_event_message">Votre message</string>
     <string name="add_event_button">Ajouter événement</string>
+    <string name="controlPassword">veillez à utiliser au minimum 8 caractères contenant chiffres, majuscules et caractères spéciaux (@#$%^+=ù*¤£?!§°/²_çà)(¨µ:.,)</string>
+    <string name="logOutButton">se deconnecter</string>
+    <string name="menu_moncompte">Mon compte</string>
 </resources>

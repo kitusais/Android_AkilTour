@@ -102,12 +102,12 @@ public class LoginSigninDao extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String resultS) {
         Log.i("--BackgroundWordker--",resultS);
         if(resultS.equals("usedNickname")){
-            Toast.makeText(context,"pseudo déjà utilisé",Toast.LENGTH_LONG).show();
             Intent i1 = new Intent(context, MainActivity.class);
             i1.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            i1.putExtra("error","usedPseudo");
             context.startActivity(i1);
 
-        }else if(resultS.equals("error")){
+        }else if(resultS.equals("error") || resultS.equals("falsePseudo")){
             Toast.makeText(context,"logins incorrects",Toast.LENGTH_LONG).show();
             Intent i1 = new Intent(context, MainActivity.class);
             context.startActivity(i1);

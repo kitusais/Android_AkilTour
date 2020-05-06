@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SecurityControler {
 
-    private static String[] list = new String[]{";","select","drop","update","delete"};
+    private static String[] list = new String[]{";","select","drop","update","delete","-"};
 
     public static boolean securityMain(Context context, List<String> strings, int[] length){
         boolean check = false;
@@ -16,11 +16,29 @@ public class SecurityControler {
             return check;
         }else if (!checkChar(context, strings)){
             return check;
+        //}else if (!checkPassStrengh(context, strings)){
+        //    return check;
         }else {
             check = true;
         }
         return  check;
     }
+
+    public static boolean checkPassStrengh(Context context, String str){
+        boolean check = false; // longeur > 12
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^+=ù*¤£?!§°/²_çà)(¨µ:.,])(?=\\S+$).{8,}";
+        //for(int i=0; i<str.size(); i++){
+            if(!str.matches(pattern)){
+                Toast.makeText(context, "Merci d'entrer au moins un chiffre, une majuscule et un caractère spécial ainsi que 8 caractères", Toast.LENGTH_LONG).show();
+                check = false;
+
+            }else{
+                check = true;
+            }
+        return  check;
+
+    }
+
     public static boolean checkChar(Context context, List<String> str){
         boolean check = true;
         int i =0;
