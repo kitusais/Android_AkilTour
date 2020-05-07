@@ -66,16 +66,7 @@ public class GalleryFragment extends Fragment {
             transaction.commit();
 //
         }
-        Log.i("Acceuil Fragment", ""+previousFragment);
-        if("createCalendar".equals(previousFragment)){
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.nav_host_fragment, new HomeFragment());
-            transaction.commit();
-        }else if("deleteCalendar".equals(previousFragment)){
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.nav_host_fragment, new HomeFragment());
-            transaction.commit();
-        }
+
         return root;
     }
 

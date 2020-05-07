@@ -235,7 +235,7 @@ public class HomeFragment extends Fragment {
                 final EditText eventName = addView.findViewById(R.id.event_name);
                 final TextView eventTime =  addView.findViewById(R.id.eventtime);
                 final ImageButton setTime = addView.findViewById(R.id.seteventtime);
-                eventTime.setText((new SimpleDateFormat("HH:mm:ss")).format(new Date()));
+                eventTime.setText((new SimpleDateFormat("HH:mm")).format(new Date())+":00");
                 Button addEvent = addView.findViewById(R.id.addevent);
                 setTime.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -324,8 +324,8 @@ public class HomeFragment extends Fragment {
         String[] params = new String[4];
         params[0]="create";
         params[1] = authPlayer.getPseudo();
-        SimpleDateFormat eventDateTimeFormatSql = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.FRENCH);
-        params[2] = eventDateTimeFormatSql.format(date);
+        SimpleDateFormat eventDateTimeFormatSql = new SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.FRENCH);
+        params[2] = eventDateTimeFormatSql.format(date)+":00";
 
 //        try {
 //            params[2] = eventDateTimeFormatSql.format(eventDateTimeFormat.parse(date+" "+time));

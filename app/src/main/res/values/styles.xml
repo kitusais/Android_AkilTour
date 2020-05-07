@@ -19,4 +19,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CustomCalendar" parent="android:Widget.CalendarView">
+        <item name="android:focusedMonthDateColor">@color/green</item>
+        <item name="android:weekNumberColor">@color/red</item>
+        <item name="android:weekDayTextAppearance">@color/colorPrimaryDark</item>
+        <item name="android:dateTextAppearance">@color/green</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:selectedDateVerticalBar">@color/green</item>
+        <item name="android:selectedWeekBackgroundColor">@color/green</item>
+    </style>
 </resources>

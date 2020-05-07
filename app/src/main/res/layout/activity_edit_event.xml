@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        tools:context=".view.EditEvent">
+
+        <TextView
+            android:id="@+id/modifyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/modifyTitle"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/initialEventTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evènement initial :"
+            android:layout_below="@id/modifyTitle"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <TextView
+            android:id="@+id/eventBeforeEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="5dp"
+            android:text="exempl d'evenement"
+            android:layout_below="@id/initialEventTitle"/>
+
+        <TextView
+            android:id="@+id/editEventTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/eventBeforeEdit"
+            android:layout_marginTop="20dp"
+            android:text="Valeurs à modifier :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
+        <RelativeLayout
+            android:id="@+id/editDateLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editEventTitle"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/modifDateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modifDateBtn"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:id="@+id/modifDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_below="@id/modifDateBtn"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/modifyDate"/>
+            <TextView
+                android:id="@+id/modifDateET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/modifDate"
+                android:layout_below="@id/modifDateBtn"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/editTimeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editEventTitle"
+            android:layout_toRightOf="@id/editDateLayout">
+
+            <TextView
+                android:id="@+id/modifHourBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modifHourBtn"
+                android:layout_marginTop="10dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/modifHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@id/modifHourBtn"
+                android:text="à"/>
+            <TextView
+                android:id="@+id/modifHourET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_below="@id/modifHourBtn"
+                android:layout_toRightOf="@id/modifHour"
+                android:hint="hh:mm:ss"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/modifEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@id/editDateLayout"
+            android:text="évènement :"/>
+        <ScrollView
+            android:id="@+id/scModifEvent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_toRightOf="@id/modifEvent"
+            android:layout_below="@id/editDateLayout">
+            <EditText
+                android:id="@+id/modifEventET"
+                android:layout_width="224dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:ems="4"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+        </ScrollView>
+
+        <Button
+            android:id="@+id/modifBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/scModifEvent"
+            android:layout_alignParentRight="true"
+            android:text="Envoyer"/>
+
+
+    </RelativeLayout>
+</ScrollView>

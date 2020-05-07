@@ -67,7 +67,7 @@ public class InsertRdvDao extends AsyncTask<String, Void, String> {
                 Log.i("Insert rdv :", "update detected");
                 String editDate = params[4];
                 String editEvent = params[5];
-                Log.i("InsertRdvToDatabase",""+editDate+ " - "+editEvent);
+                Log.i("InsertRdvToDatabase","username :"+username+" - date :"+date+" - message :"+message+"editDate"+editDate+ " - editeEvent"+editEvent);
                 post_data  = URLEncoder.encode("action","UTF-8")+"="+URLEncoder.encode(action,"UTF-8")+"&"+
                         URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"+
                         URLEncoder.encode("date","UTF-8")+"="+URLEncoder.encode(date,"UTF-8")+"&"+
@@ -117,9 +117,13 @@ public class InsertRdvDao extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String resultS) {
         ArrayList<String> list = new ArrayList<String>();
         String str ="";
-
+        Log.i("insertDaoResult",resultS);
         alreadyImported = true;
         listEvents.clear();
+        Log.i("InsertRdvDaoResult",action);
+        //if(action.equals("update")){
+        //    ((Activity)context).finish();
+        //}
         previousFragment = action+"Calendar";
         GetRdvDao getRdvFromDatabase = new GetRdvDao(context);
         getRdvFromDatabase.execute();

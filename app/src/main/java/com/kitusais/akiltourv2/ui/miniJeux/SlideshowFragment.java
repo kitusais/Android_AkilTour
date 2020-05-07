@@ -7,13 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.kitusais.akiltourv2.R;
@@ -21,22 +18,18 @@ import com.kitusais.akiltourv2.controler.GameDoubleButtonControler;
 import com.kitusais.akiltourv2.controler.GetGameDAO;
 import com.kitusais.akiltourv2.view.ResultFragment;
 
-import static com.kitusais.akiltourv2.MainActivity.numRandomGame;
-
 public class SlideshowFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
     public Context context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = null;
+        View root;
         context = this.getContext();
 
         // POUR ENVOYER UN JEU ALEATOIR
 //        if(numRandomGame == 1){
-            slideshowViewModel =
-                    ViewModelProviders.of(this).get(SlideshowViewModel.class);
+        SlideshowViewModel slideshowViewModel = ViewModelProviders.of(this).get(SlideshowViewModel.class);
             root = inflater.inflate(R.layout.fragment_double_button, container, false);
             GameDoubleButtonControler.startGame(context,root);
         //root = inflater.inflate(R.layout.fragment_slideshow, container, false);
@@ -72,8 +65,9 @@ public class SlideshowFragment extends Fragment {
     }
 
 
-    public void replaceFragment(Fragment someFragment) {
+    private void replaceFragment(Fragment someFragment) {
 
+        assert getFragmentManager() != null;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, someFragment);
 //        transaction.addToBackStack(null);
@@ -83,11 +77,11 @@ public class SlideshowFragment extends Fragment {
 
     @Override
     public void onPause() {
-        Log.i("Fragment minijeux","onPause called");
         super.onPause();
-
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
-        }
+        // c'était un test pour le backPressed et quit direct mais ça fonctionne apparement sans :)
+        //assert getFragmentManager() != null;
+        //if (getFragmentManager().getBackStackEntryCount() > 0) {
+        //    getFragmentManager().popBackStack();
+        //}
     }
 }

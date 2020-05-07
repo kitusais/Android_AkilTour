@@ -1,5 +1,6 @@
 package com.kitusais.akiltourv2.controler;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.CalendarContract;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kitusais.akiltourv2.R;
 import com.kitusais.akiltourv2.model.ImportedEvent;
 import com.kitusais.akiltourv2.ui.Calendrier.HomeFragment;
+import com.kitusais.akiltourv2.view.EditEvent;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,7 +50,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 //        Log.i("hahaaha trouvéééé","dede");
         final ImportedEvent event = arrayList.get(position);
-        Log.i("!!!!!! Recycler !!!!!!",event.getMessage());
+
         String[] linesEvent = event.getMessage().split("\\\\n");
         holder.event.setText("");
         for(int i=0; i<linesEvent.length; i++){
@@ -73,15 +75,17 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
             });
             holder.imageModify.setClickable(true);
             holder.imageModify.setImageResource(R.drawable.pencil);
-//            holder.imageModify.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    eventEdit = event;
-//                    Intent intent = new Intent(v.getContext(), EditEvent.class);
-//                    v.getContext().startActivity(intent);
-//
-//                }
-//            });
+            holder.imageModify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("recyclerView", "modify click !!!!!");
+                    eventEdit = event;
+                    ((Activity)context).finish();
+                    Intent intent = new Intent(v.getContext(), EditEvent.class);
+                    v.getContext().startActivity(intent);
+
+                }
+            });
 ////            holder.image.setLayoutParams(new FrameLayout.LayoutParams(50, 50));
         }
 //        Log.i("events.getDATE()",""+events.getDATE());

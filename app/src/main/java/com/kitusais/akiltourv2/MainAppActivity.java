@@ -3,9 +3,12 @@ package com.kitusais.akiltourv2;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
+import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -33,7 +36,9 @@ import com.kitusais.akiltourv2.view.ResultFragment;
 import static com.kitusais.akiltourv2.MainActivity.alreadyImported;
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
 import static com.kitusais.akiltourv2.MainActivity.numRandomGame;
+import static com.kitusais.akiltourv2.MainActivity.previousFragment;
 //import static com.kitusais.akiltourv2.controler.GameDoubleButtonControler.won;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainAppActivity extends AppCompatActivity {
 
@@ -49,7 +54,7 @@ public class MainAppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.i("mainAppActivity - previousFrag"," - "+previousFragment);
         setContentView(R.layout.activity_main_app);
         Toolbar toolbar = findViewById(R.id.toolbar);
         context = this;
@@ -57,19 +62,6 @@ public class MainAppActivity extends AppCompatActivity {
 //        Intent intent = getIntent();
 //        String previousFragment = null;
 //        previousFragment = intent.getStringExtra("previousFragment");
-//        if(previousFragment!=null) {
-//            if (previousFragment.equals("calendar")) {
-////                FragmentManager manager = getFragmentManager();
-////                FragmentTransaction transaction = manager.beginTransaction();
-////                transaction.add(R.id.nav_host_fragment, new HomeFragment(),null);
-////                transaction.addToBackStack(null);
-////                transaction.commit();
-////                getSupportFragmentManager().beginTransaction()
-////                        .add(R.id.nav_host_fragment, new HomeFragment()).commit();
-//
-//            Log.i("MainAppActivity", "previousFragment = calendar");
-//            }
-//        }
         if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         }
@@ -113,6 +105,18 @@ public class MainAppActivity extends AppCompatActivity {
          //       .setDrawerLayout(drawer)
          //       .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+
+        NavInflater navInflater = navController.getNavInflater();
+        NavGraph graph = navInflater.inflate(R.navigation.mobile_navigation);
+
+        if (previousFragment != null) {
+            graph.setStartDestination(R.id.nav_home);
+        } else {
+            graph.setStartDestination(R.id.nav_gallery);
+        }
+
+        navController.setGraph(graph);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -141,6 +145,7 @@ public class MainAppActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        previousFragment = null;
                         finish();
                     }
                 })

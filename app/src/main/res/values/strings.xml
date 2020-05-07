@@ -26,4 +26,8 @@
     <string name="controlPassword">veillez à utiliser au minimum 8 caractères contenant chiffres, majuscules et caractères spéciaux (@#$%^+=ù*¤£?!§°/²_çà)(¨µ:.,)</string>
     <string name="logOutButton">se deconnecter</string>
     <string name="menu_moncompte">Mon compte</string>
+    <string name="modifyTitle">Modification de l\'évènement</string>
+    <string name="modifDateBtn">modifier la date</string>
+    <string name="modifyDate">Date :</string>
+    <string name="modifHourBtn">Modifier l\'heure</string>
 </resources>

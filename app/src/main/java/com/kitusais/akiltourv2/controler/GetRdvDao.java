@@ -146,9 +146,10 @@ public class GetRdvDao extends AsyncTask<Void, Void, String> {
 //            context.startActivity(intent);
 //            activity.finish();
             Log.i("GetRdvDao",""+previousFragment);
-            if("createCalendar".equals(previousFragment)){
+            if("createCalendar".equals(previousFragment) || "updateCalendar".equals(previousFragment)){
                 Activity activity = (Activity) context;
                 activity.finish();
+                //Intent intent = new Intent(context, MainAppActivity.class);
                 Intent intent = new Intent(context, MainAppActivity.class);
                 context.startActivity(intent);
             }else if("deleteCalendar".equals(previousFragment)){
