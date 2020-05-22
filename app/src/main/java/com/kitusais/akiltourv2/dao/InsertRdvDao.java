@@ -1,16 +1,10 @@
-package com.kitusais.akiltourv2.controler;
+package com.kitusais.akiltourv2.dao;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,12 +18,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Date;
 
 import static com.kitusais.akiltourv2.MainActivity.alreadyImported;
 import static com.kitusais.akiltourv2.MainActivity.baseUrl;
 import static com.kitusais.akiltourv2.MainActivity.previousFragment;
-import static com.kitusais.akiltourv2.controler.GetRdvDao.listEvents;
+import static com.kitusais.akiltourv2.dao.GetRdvDao.listEvents;
 
 
 public class InsertRdvDao extends AsyncTask<String, Void, String> {
@@ -124,7 +117,7 @@ public class InsertRdvDao extends AsyncTask<String, Void, String> {
         //if(action.equals("update")){
         //    ((Activity)context).finish();
         //}
-        previousFragment = action+"Calendar";
+        previousFragment = "Calendar";
         GetRdvDao getRdvFromDatabase = new GetRdvDao(context);
         getRdvFromDatabase.execute();
 //        Intent intent = new Intent(context, Calendar0.class);

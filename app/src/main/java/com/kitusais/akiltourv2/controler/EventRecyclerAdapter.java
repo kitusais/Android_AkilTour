@@ -3,7 +3,6 @@ package com.kitusais.akiltourv2.controler;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kitusais.akiltourv2.R;
+import com.kitusais.akiltourv2.dao.InsertRdvDao;
 import com.kitusais.akiltourv2.model.ImportedEvent;
-import com.kitusais.akiltourv2.ui.Calendrier.HomeFragment;
 import com.kitusais.akiltourv2.view.EditEvent;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 

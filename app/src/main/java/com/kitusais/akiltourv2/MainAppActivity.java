@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
 import androidx.navigation.NavInflater;
@@ -16,29 +14,22 @@ import androidx.navigation.ui.NavigationUI;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.SurfaceControl;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-//import com.google.firebase.database.FirebaseDatabase;
-import com.kitusais.akiltourv2.controler.GetRdvDao;
-import com.kitusais.akiltourv2.model.Player;
-import com.kitusais.akiltourv2.ui.Calendrier.HomeFragment;
-import com.kitusais.akiltourv2.ui.miniJeux.SlideshowFragment;
-import com.kitusais.akiltourv2.view.ResultFragment;
+import com.google.firebase.database.FirebaseDatabase;
+import com.kitusais.akiltourv2.dao.GetRdvDao;
 
 import static com.kitusais.akiltourv2.MainActivity.alreadyImported;
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
-import static com.kitusais.akiltourv2.MainActivity.numRandomGame;
 import static com.kitusais.akiltourv2.MainActivity.previousFragment;
 //import static com.kitusais.akiltourv2.controler.GameDoubleButtonControler.won;
-import androidx.fragment.app.FragmentTransaction;
+
 
 public class MainAppActivity extends AppCompatActivity {
 
@@ -46,7 +37,7 @@ public class MainAppActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     //public static String baseUrl ="http://kitusais.orgfree.com/droid_connect_2/";
     public static String baseUrl ="http://192.168.1.21/up2net/";
-//    public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Context context;
     private AlertDialog alertDialog;
     private boolean success = false;
@@ -96,7 +87,7 @@ public class MainAppActivity extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)//
+                R.id.nav_tools, R.id.nav_result, R.id.nav_send)//
                 .setDrawerLayout(drawer)
                 .build();
         //mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -110,8 +101,10 @@ public class MainAppActivity extends AppCompatActivity {
         NavInflater navInflater = navController.getNavInflater();
         NavGraph graph = navInflater.inflate(R.navigation.mobile_navigation);
 
-        if (previousFragment != null) {
+        if ("Calendar".equals(previousFragment)) {
             graph.setStartDestination(R.id.nav_home);
+        //}else if("Resultat".equals(previousFragment)){
+        //    graph.setStartDestination(R.id.);
         } else {
             graph.setStartDestination(R.id.nav_gallery);
         }

@@ -30,4 +30,5 @@
     <string name="modifDateBtn">modifier la date</string>
     <string name="modifyDate">Date :</string>
     <string name="modifHourBtn">Modifier l\'heure</string>
+    <string name="menu_result">Résultats</string>
 </resources>

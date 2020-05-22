@@ -30,10 +30,10 @@
         tools:layout="@layout/fragment_compte" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.kitusais.akiltourv2.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_result"
+        android:name="com.kitusais.akiltourv2.ui.resultats.ResultatsFragment"
+        android:label="@string/menu_result"
+        tools:layout="@layout/result_fragment" />
 
     <fragment
         android:id="@+id/nav_send"

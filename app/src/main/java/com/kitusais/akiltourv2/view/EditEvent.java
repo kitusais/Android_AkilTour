@@ -24,9 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kitusais.akiltourv2.R;
-import com.kitusais.akiltourv2.controler.InsertRdvDao;
+import com.kitusais.akiltourv2.dao.InsertRdvDao;
 import com.kitusais.akiltourv2.controler.SecurityControler;
-import com.kitusais.akiltourv2.model.ImportedEvent;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

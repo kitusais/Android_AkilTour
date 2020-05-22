@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.kitusais.akiltourv2.R;
 import com.kitusais.akiltourv2.controler.GameDoubleButtonControler;
-import com.kitusais.akiltourv2.controler.GetGameDAO;
+import com.kitusais.akiltourv2.dao.GetGameDAO;
 import com.kitusais.akiltourv2.view.ResultFragment;
 
 public class SlideshowFragment extends Fragment {

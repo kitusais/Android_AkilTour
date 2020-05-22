@@ -1,14 +1,14 @@
-package com.kitusais.akiltourv2.ui.share;
+package com.kitusais.akiltourv2.ui.resultats;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class ResultatsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ShareViewModel() {
+    public ResultatsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is share fragment");
     }

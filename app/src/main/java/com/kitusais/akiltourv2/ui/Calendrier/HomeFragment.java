@@ -24,9 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.kitusais.akiltourv2.R;
+import com.kitusais.akiltourv2.controler.CalendarController;
 import com.kitusais.akiltourv2.controler.EventRecyclerAdapter;
-import com.kitusais.akiltourv2.controler.GetRdvDao;
-import com.kitusais.akiltourv2.controler.InsertRdvDao;
+import com.kitusais.akiltourv2.dao.GetRdvDao;
+import com.kitusais.akiltourv2.dao.InsertRdvDao;
 import com.kitusais.akiltourv2.controler.SecurityControler;
 import com.kitusais.akiltourv2.model.ImportedEvent;
 //import com.kitusais.akiltourv2.model.ImportedEvent;
@@ -40,8 +41,8 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
-import static com.kitusais.akiltourv2.controler.GetRdvDao.listEvents;
-import static com.kitusais.akiltourv2.controler.GetRdvDao.listImportedEvents;
+import static com.kitusais.akiltourv2.dao.GetRdvDao.listEvents;
+import static com.kitusais.akiltourv2.dao.GetRdvDao.listImportedEvents;
 
 public class HomeFragment extends Fragment {
 
@@ -169,7 +170,18 @@ public class HomeFragment extends Fragment {
 //                if(){
 //
 //                }
-                dayclick(dateClicked);
+                //dayclick(dateClicked);
+
+
+                View showView = LayoutInflater.from(getContext()).inflate(R.layout.show_events_layout, null);
+                eventListTitle = showView.findViewById(R.id.eventsListTitle);
+                String strEvenement = "Evenement";
+                if (CalendarController.collectEventByDate(dateClicked).size() > 1){
+                    strEvenement += "s";
+                }
+                eventListTitle.setText(strEvenement+" pour le "+(new SimpleDateFormat("EEEE \nd MMMM yyyy ", Locale.FRENCH)).format(dateClicked));
+                AlertDialog alertDialog = CalendarController.OnDayClick(getContext(), dateClicked);
+                alertDialog.show();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 List<Event> listEvents = compactCalendar.getEvents(dateClicked);
                 for(ImportedEvent event:listImportedEvents) {
@@ -187,7 +199,7 @@ public class HomeFragment extends Fragment {
 //                firstDayOfNewMonth = new Date(dateCal.getTimeInMillis());
                 Log.d("MonthScroll", "Month was scrolled to: " + firstDayOfNewMonth);
                 textView.setText(new SimpleDateFormat("MMMM",lang).format(firstDayOfNewMonth).substring(0,1).toUpperCase()+
-                        new SimpleDateFormat("MMMM",lang).format(firstDayOfNewMonth).substring(1).toLowerCase());
+                        new SimpleDateFormat("MMMM yyyy",lang).format(firstDayOfNewMonth).substring(1).toLowerCase());
             }
         });
         return root;
@@ -200,7 +212,7 @@ public class HomeFragment extends Fragment {
 
     public void dayclick(final Date day){
         Log.i("CalendarFragment", "day clicked : "+day.toString());
-        ArrayList<ImportedEvent> listDayImportedEvent = collectEventByDate(day);
+        ArrayList<ImportedEvent> listDayImportedEvent = CalendarController.collectEventByDate(day);
 //        for(ImportedEvent event:listDayImportedEvent){
 //            Log.i("onDayClick"," listDayImportedEvent :"+event.toString());
 //        }
@@ -211,7 +223,8 @@ public class HomeFragment extends Fragment {
 //        eventListTitle = showView.findViewById(R.id.eventsListTitle);
         eventListTitle = showView.findViewById(R.id.eventsListTitle);
         String strEvenement = "Evenement";
-        if (collectEventByDate(day).size() > 1){
+        //if (collectEventByDate(day).size() > 1){
+        if (CalendarController.collectEventByDate(day).size() > 1){
             strEvenement += "s";
         }
         eventListTitle.setText(strEvenement+" pour le "+(new SimpleDateFormat("EEEE \nd MMMM yyyy ", Locale.FRENCH)).format(day));
@@ -220,7 +233,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         EventRecyclerAdapter eventRecyclerAdapter = new EventRecyclerAdapter(showView.getContext()
-                ,collectEventByDate(day));
+                ,CalendarController.collectEventByDate(day));
         recyclerView.setAdapter(eventRecyclerAdapter);
         eventRecyclerAdapter.notifyDataSetChanged();
         builder.setView(showView);
@@ -281,7 +294,7 @@ public class HomeFragment extends Fragment {
                         userEntry.add(eventName.getText().toString());
                         int[] userEntryLength = {200};
                         if(SecurityControler.securityMain(getContext(), userEntry, userEntryLength)) {
-                            saveEvent(userEntry.get(0), addedDate);
+                            CalendarController.saveEvent(getContext(),userEntry.get(0), addedDate);
                         }
 //                        ImportedEvent addedEvent = new ImportedEvent(authPlayer.getPseudo(),addedDate,eventName.getText().toString());
                         alertDialog.dismiss();

@@ -7,6 +7,7 @@ import android.widget.TextView;
 //import com.google.firebase.database.DatabaseReference;
 //import com.kitusais.poeinantes2019.model.Joueur;
 
+import com.google.firebase.database.DatabaseReference;
 import com.kitusais.akiltourv2.model.Player;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
+import static com.kitusais.akiltourv2.MainAppActivity.database;
 //import static com.kitusais.akiltourv2.MainAppActivity.database;
 //import static com.kitusais.poeinantes2019.model.BackgroundWorker.authPlayer;
 //import static com.kitusais.poeinantes2019.view.MainActivity.database;
@@ -25,8 +27,8 @@ public class GameControler {
         long endTime = new Date().getTime();
 
         authPlayer.setGameTimer(endTime-startTime);
-//        final DatabaseReference dbRef = database.getReference("joueurs");
-//        dbRef.child(authPlayer.getPseudo()).setValue(authPlayer);
+        final DatabaseReference dbRef = database.getReference("joueurs");
+        dbRef.child(authPlayer.getPseudo()).setValue(authPlayer);
     }
 
     public static String convertTime(long time){

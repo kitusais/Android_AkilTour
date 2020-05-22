@@ -1,7 +1,6 @@
 package com.kitusais.akiltourv2.view;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -20,7 +19,7 @@ import android.widget.TextView;
 
 import com.kitusais.akiltourv2.MainAppActivity;
 import com.kitusais.akiltourv2.R;
-import com.kitusais.akiltourv2.controler.FirebaseDatabaseHelper;
+import com.kitusais.akiltourv2.dao.FirebaseDatabaseHelper;
 import com.kitusais.akiltourv2.controler.GameControler;
 import com.kitusais.akiltourv2.controler.RecyclerView_Config;
 import com.kitusais.akiltourv2.model.Player;

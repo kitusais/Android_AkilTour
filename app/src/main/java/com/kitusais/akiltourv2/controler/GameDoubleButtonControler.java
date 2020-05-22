@@ -25,7 +25,7 @@ public class GameDoubleButtonControler {
     private static Button button1;
     private static Button button2;
     private static TextView title;
-    private static boolean clickButton1 = false;
+    private static boolean clickButton1;
     //    private boolean start = false;
 //    private Context context = this;
     private static long startime;
@@ -36,7 +36,7 @@ public class GameDoubleButtonControler {
     public static void startGame(final Context context, final View view) {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_game_double_button);
-
+        clickButton1 = false;
         startime = new Date().getTime();
         button1 = (Button) view.findViewById(R.id.gameDoubleButton1);
         button2 = view.findViewById(R.id.gameDoubleButton2);

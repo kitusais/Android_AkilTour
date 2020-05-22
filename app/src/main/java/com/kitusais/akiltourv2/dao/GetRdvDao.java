@@ -1,4 +1,4 @@
-package com.kitusais.akiltourv2.controler;
+package com.kitusais.akiltourv2.dao;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -146,17 +146,17 @@ public class GetRdvDao extends AsyncTask<Void, Void, String> {
 //            context.startActivity(intent);
 //            activity.finish();
             Log.i("GetRdvDao",""+previousFragment);
-            if("createCalendar".equals(previousFragment) || "updateCalendar".equals(previousFragment)){
+            if("Calendar".equals(previousFragment)){
                 Activity activity = (Activity) context;
                 activity.finish();
                 //Intent intent = new Intent(context, MainAppActivity.class);
                 Intent intent = new Intent(context, MainAppActivity.class);
                 context.startActivity(intent);
-            }else if("deleteCalendar".equals(previousFragment)){
-                Activity activity = (Activity) contextCalendar;
-                activity.finish();
-                Intent intent = new Intent(context, MainAppActivity.class);
-                contextCalendar.startActivity(intent);
+            //}else if("deleteCalendar".equals(previousFragment)){
+             //   Activity activity = (Activity) contextCalendar;
+            //    activity.finish();
+             //   Intent intent = new Intent(context, MainAppActivity.class);
+             //   contextCalendar.startActivity(intent);
             }
 //            alertDialog.setMessage(str);
 //            alertDialog.show();

@@ -1,4 +1,4 @@
-package com.kitusais.akiltourv2.controler;
+package com.kitusais.akiltourv2.dao;
 
 import androidx.annotation.NonNull;
 

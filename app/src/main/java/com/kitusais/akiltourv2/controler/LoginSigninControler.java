@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.kitusais.akiltourv2.MainActivity;
+import com.kitusais.akiltourv2.dao.LoginSigninDao;
 
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
 

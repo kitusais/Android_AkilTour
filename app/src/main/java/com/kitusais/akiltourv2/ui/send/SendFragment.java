@@ -13,9 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.kitusais.akiltourv2.R;
-import com.kitusais.akiltourv2.controler.GetGameDAO;
-
-import static com.kitusais.akiltourv2.MainActivity.numRandomGame;
 
 public class SendFragment extends Fragment {
 
