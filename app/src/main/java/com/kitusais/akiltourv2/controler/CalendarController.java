@@ -1,10 +1,8 @@
 package com.kitusais.akiltourv2.controler;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -32,26 +30,18 @@ import static com.kitusais.akiltourv2.dao.GetRdvDao.listImportedEvents;
 
 public class CalendarController {
 
+    //@Todo si on va pour modifier un event et qu'on fait retour on quitte l'appli
     private static AlertDialog alertDialogSelectHour;
     private static AlertDialog alertDialog;
     private static Date day;
-    //private AlertDialog alertDialog;
 
     public static AlertDialog OnDayClick(final Context context, Date argDay){
 
         day = argDay;
-        ArrayList<ImportedEvent> listDayImportedEvent = collectEventByDate(day);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setCancelable(true);
         View showView = LayoutInflater.from(context).inflate(R.layout.show_events_layout, null);
-//
-//        eventListTitle = showView.findViewById(R.id.eventsListTitle);
-//        String strEvenement = "Evenement";
-//        if (collectEventByDate(day).size() > 1){
-//            strEvenement += "s";
-//        }
-//        eventListTitle.setText(strEvenement+" pour le "+(new SimpleDateFormat("EEEE \nd MMMM yyyy ", Locale.FRENCH)).format(day));
         RecyclerView recyclerView = showView.findViewById(R.id.EventsRdv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(showView.getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -68,7 +58,6 @@ public class CalendarController {
             public void onClick(DialogInterface arg0, int arg1) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setCancelable(true);
-                //final View addView = LayoutInflater.from(getContext()).inflate(R.layout.add_newevent_layout, null);
                 final View addView = LayoutInflater.from(context).inflate(R.layout.add_newevent_layout, null);
                 final EditText eventName = addView.findViewById(R.id.event_name);
                 final TextView eventTime =  addView.findViewById(R.id.eventtime);
@@ -81,7 +70,6 @@ public class CalendarController {
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setCancelable(true);
                         final View addViewSelectHour = LayoutInflater.from(context).inflate(R.layout.pick_hour, null);
-//                        final TextView eventTime =  addViewSelectHour.findViewById(R.id.eventtime);
                         Button addHourBtn = addViewSelectHour.findViewById(R.id.selectHourBtn);
                         final TimePicker timePicker = addViewSelectHour.findViewById(R.id.timePicker);
                         timePicker.setIs24HourView(true);
@@ -109,7 +97,6 @@ public class CalendarController {
                         Date addedDate = null;
                         try {
                             addedDate = sdf2.parse(sdf0.format(day)+" "+eventTime.getText());
-                            Log.i("Added Event",addedDate.toString());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -126,7 +113,6 @@ public class CalendarController {
             }
         });
         return alertDialog;
-        //alertDialog.show();
     }
 
     public static ArrayList<ImportedEvent> collectEventByDate(Date date){
@@ -134,13 +120,6 @@ public class CalendarController {
         ArrayList<ImportedEvent> arrayList = new ArrayList<>();
         for(ImportedEvent ev:listImportedEvents){
             if (sdf.format(ev.getDate()).equals(sdf.format(date))){
-                Log.i("Import event date : ",""+ev.getDate());
-//                String initiator = ev.getUser();
-//                String event = ev.getMessage();
-//                String time = anotherSdfTime.format(ev.getDate());
-//                String Date = anotherSdf.format(ev.getDate());
-//                String month = ""+ev.getDate().getMonth();
-//                String year = ""+ev.getDate().getYear();
                 ImportedEvent events = new ImportedEvent(ev.getId(), ev.getInitiator(),ev.getDate(),ev.getMessage());
                 arrayList.add(events);
             }
@@ -151,28 +130,14 @@ public class CalendarController {
 
     public static void saveEvent(Context context, String event, Date date){
         // TODO save sur mysql
-//        Log.i("---   saveEvent   ---",date+" "+time);
         String[] params = new String[4];
         params[0]="create";
         params[1] = authPlayer.getPseudo();
         SimpleDateFormat eventDateTimeFormatSql = new SimpleDateFormat("yyyy-MM-dd HH:mm",Locale.FRENCH);
         params[2] = eventDateTimeFormatSql.format(date)+":00";
 
-//        try {
-//            params[2] = eventDateTimeFormatSql.format(eventDateTimeFormat.parse(date+" "+time));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         params[3] = event;
         InsertRdvDao insertRdvDao = new InsertRdvDao(context);
         insertRdvDao.execute(params);
-//        dbOpenHelper = new DBOpenHelper(context);
-//        SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
-//        dbOpenHelper.saveEvent(event, time, date, month, year, database);
-//        dbOpenHelper.close();
-//        Toast.makeText(context, "Event saved localy", Toast.LENGTH_SHORT).show();
-//        for (int i=0; i<10; i+=2){
-//            eventsList.add(new Events("event "+(i+1), "00:00", ""+(11+i),"11","2019" ));
-//        }
     }
 }
