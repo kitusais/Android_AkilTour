@@ -29,8 +29,9 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
     public Context context;
     ArrayList<ImportedEvent> arrayList;
-
+    private static ImportedEvent event;
     public static ImportedEvent eventEdit;
+    public static ImportedEvent clickedEvent;
     public EventRecyclerAdapter(Context context, ArrayList<ImportedEvent> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
@@ -47,13 +48,15 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 //        Log.i("hahaaha trouvéééé","dede");
-        final ImportedEvent event = arrayList.get(position);
-
+        //final ImportedEvent event = arrayList.get(position);
+        event = arrayList.get(position);
         String[] linesEvent = event.getMessage().split("\\\\n");
-        holder.event.setText("");
+        holder.currentEvent = event;
+        holder.idEvent = event.getId();
+        holder.eventName.setText("");
         for(int i=0; i<linesEvent.length; i++){
             Log.i("event line "+i+" ", linesEvent[i]);
-            holder.event.setText(holder.event.getText()+linesEvent[i]+"\n");
+            holder.eventName.setText(holder.eventName.getText()+linesEvent[i]+"\n");
         }
 ////        holder.event.setText(events.getMessage());
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -86,6 +89,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
             });
 ////            holder.image.setLayoutParams(new FrameLayout.LayoutParams(50, 50));
         }
+
 //        Log.i("events.getDATE()",""+events.getDATE());
 //        Log.i("events.getTime()",""+events.getTime());
 
@@ -97,14 +101,24 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView dateTxt, event, time;
+        int idEvent;
+        ImportedEvent currentEvent;
+        TextView dateTxt, eventName, time;
         ImageView imageSupr, imageModify;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickedEvent = currentEvent;
+                    CalendarController.onEventClick(context);
+
+                }
+            });
             dateTxt = itemView.findViewById(R.id.eventdate);
-            event = itemView.findViewById(R.id.eventname);
+            eventName = itemView.findViewById(R.id.eventname);
             time = itemView.findViewById(R.id.eventtime);
             imageSupr = itemView.findViewById(R.id.imgSuppr);
             imageModify = itemView.findViewById(R.id.imgModify);

@@ -69,11 +69,19 @@
             android:text="@string/controlPassword"
             android:layout_below="@id/SignInPopUpPassEt2"
             android:textColor="#ff0000"/>
+        <TextView
+            android:id="@+id/controlInactif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONTROLE INACTIF POUR LES TESTS"
+            android:layout_below="@id/controlPassword"
+            android:layout_centerHorizontal="true"
+            android:textColor="#37eb34"/>
         <Button
             android:id="@+id/SignInBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/controlPassword"
+            android:layout_below="@id/controlInactif"
             android:layout_alignRight="@id/SignInPopUpPassEt2"
             android:text="@string/SignInBtn"/>
     </RelativeLayout>

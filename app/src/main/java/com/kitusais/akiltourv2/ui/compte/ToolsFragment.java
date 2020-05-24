@@ -15,13 +15,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.kitusais.akiltourv2.R;
+import com.kitusais.akiltourv2.controler.AccountController;
 import com.kitusais.akiltourv2.controler.LoginSigninControler;
+
+import static com.kitusais.akiltourv2.MainActivity.authPlayer;
 
 public class ToolsFragment extends Fragment {
 
     private ToolsViewModel toolsViewModel;
-    Button logOutButton;
-    Context context;
+    private Button logOutButton;
+    private Context context;
+    private TextView usernameTv;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
@@ -35,6 +39,14 @@ public class ToolsFragment extends Fragment {
             }
         });
         context = root.getContext();
+        usernameTv = root.findViewById(R.id.compte_username);
+        usernameTv.setText("Username : "+authPlayer.getPseudo());
+        usernameTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountController.popupEdit(context, "Username");
+            }
+        });
         logOutButton = root.findViewById(R.id.logOutButton);
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override

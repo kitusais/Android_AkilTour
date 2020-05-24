@@ -14,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kitusais.akiltourv2.dao.GetRdvDao;
+import com.kitusais.akiltourv2.view.EventDetails;
 
 import static com.kitusais.akiltourv2.MainActivity.alreadyImported;
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
@@ -45,14 +47,14 @@ public class MainAppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("mainAppActivity - previousFrag"," - "+previousFragment);
+        Log.i("mainAppActivity - previousFrag"," - "+authPlayer.getId());
         setContentView(R.layout.activity_main_app);
         Toolbar toolbar = findViewById(R.id.toolbar);
         context = this;
         Log.i("MainAppActivity","launched");
-//        Intent intent = getIntent();
-//        String previousFragment = null;
-//        previousFragment = intent.getStringExtra("previousFragment");
+        Intent intent = getIntent();
+        String previousFragment = null;
+        previousFragment = intent.getStringExtra("previousFragment");
         if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         }
@@ -105,6 +107,10 @@ public class MainAppActivity extends AppCompatActivity {
             graph.setStartDestination(R.id.nav_home);
         //}else if("Resultat".equals(previousFragment)){
         //    graph.setStartDestination(R.id.);
+        }else if ("EventDetail".equals(previousFragment)) {
+            graph.setStartDestination(R.id.nav_home);
+            Intent intent1=new Intent(context, EventDetails.class);
+            context.startActivity(intent1);
         } else {
             graph.setStartDestination(R.id.nav_gallery);
         }

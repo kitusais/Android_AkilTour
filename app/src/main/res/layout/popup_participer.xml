@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/popup_pariticiper"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/popup_participation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voulez-vous participer ?"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/popup_participation_decision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/popup_participation_title"
+            android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:id="@+id/popup_participation_group_icon"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/popup_participation_title">
+
+            <ImageView
+                android:id="@+id/popup_participation_ok"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/in"/>
+
+            <ImageView
+                android:id="@+id/popup_participation_peutetre"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@id/popup_participation_ok"
+                android:src="@drawable/interrogation"
+                />
+            <ImageView
+                android:id="@+id/popup_participation_no"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@id/popup_participation_peutetre"
+                android:src="@drawable/out"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/popup_participation_comment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/popup_participation_group_icon"
+            android:text="Commentaire : "/>
+
+        <EditText
+            android:id="@+id/popup_participation_comment_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/popup_participation_comment_title"
+            android:layout_below="@id/popup_participation_group_icon"
+            android:ems="10"
+            android:lines="5"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <RelativeLayout
+            android:id="@+id/popup_participation_group_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/popup_participation_comment_edit">
+
+            <Button
+                android:id="@+id/popup_participation_annuler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Annuler"
+                />
+
+            <Button
+                android:id="@+id/popup_participation_valider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Valider"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

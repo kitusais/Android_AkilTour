@@ -16,11 +16,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/compte_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_tools"/>
+    <TextView
+        android:id="@+id/compte_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compte_username"
+        android:text="Password : *************"/>
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_tools"
+        android:layout_below="@id/compte_pass"
         android:text="@string/logOutButton"/>
 
 </RelativeLayout>

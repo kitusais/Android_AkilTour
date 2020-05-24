@@ -34,6 +34,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+// Si un user test existe et qu'on inscrit tEst ça fonctionne !!!!!!!!!
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
                         userEntry.add(pass1.getText().toString());
                         userEntry.add(pass2.getText().toString());
                         int[] userEntryLength = {20,20,20};
-                        if(SecurityControler.securityMain(context,userEntry, userEntryLength) && SecurityControler.checkPassStrengh(context, userEntry.get(1))) {
+                        // A decommenter pour activer le controle de force du password
+                        //if(SecurityControler.securityMain(context,userEntry, userEntryLength) && SecurityControler.checkPassStrengh(context, userEntry.get(1))) {
+                        if(SecurityControler.securityMain(context,userEntry, userEntryLength)) {
                             LoginSigninControler.passCheck(context, userEntry.get(0), userEntry.get(1), userEntry.get(2));
                             //alertDialog.dismiss();
                             //finish();

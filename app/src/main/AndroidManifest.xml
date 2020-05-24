@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".view.EditEvent"></activity>
+        <activity android:name=".view.EventDetails" />
         <activity android:name=".MainAppActivity" />
         <activity
             android:name=".MainActivity"

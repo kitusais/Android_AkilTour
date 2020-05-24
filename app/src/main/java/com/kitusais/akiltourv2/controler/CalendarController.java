@@ -1,5 +1,6 @@
 package com.kitusais.akiltourv2.controler;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,14 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.kitusais.akiltourv2.R;
 import com.kitusais.akiltourv2.dao.InsertRdvDao;
+import com.kitusais.akiltourv2.dao.SetGetParticipantDao;
 import com.kitusais.akiltourv2.model.ImportedEvent;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.kitusais.akiltourv2.MainActivity.authPlayer;
+import static com.kitusais.akiltourv2.controler.EventRecyclerAdapter.clickedEvent;
 import static com.kitusais.akiltourv2.dao.GetRdvDao.listImportedEvents;
 
 public class CalendarController {
@@ -34,6 +34,16 @@ public class CalendarController {
     private static AlertDialog alertDialogSelectHour;
     private static AlertDialog alertDialog;
     private static Date day;
+    private static int idEventClicked;
+
+    public static Date getDateClicked(){
+        return day;
+    }
+
+    public static int getIdEventClicked(){
+        return idEventClicked;
+    }
+
 
     public static AlertDialog OnDayClick(final Context context, Date argDay){
 
@@ -126,6 +136,15 @@ public class CalendarController {
         }
 
         return arrayList;
+    }
+
+    public static void onEventClick(Context context){
+        String[] params = new String[2];
+        params[0] = "get";
+        params[1] = ""+clickedEvent.getId();
+        SetGetParticipantDao setGetRdvPersonFromDatabase = new SetGetParticipantDao(context);
+        setGetRdvPersonFromDatabase.execute(params);
+        //((Activity)context).finish();
     }
 
     public static void saveEvent(Context context, String event, Date date){
