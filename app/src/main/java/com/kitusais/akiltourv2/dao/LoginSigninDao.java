@@ -10,7 +10,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.kitusais.akiltourv2.MainActivity;
-import com.kitusais.akiltourv2.MainAppActivity;
 import com.kitusais.akiltourv2.model.Player;
 
 import org.json.JSONException;

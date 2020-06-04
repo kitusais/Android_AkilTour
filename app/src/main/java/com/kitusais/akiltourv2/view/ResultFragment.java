@@ -41,54 +41,54 @@ public class ResultFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        Log.i("ResultFragment","lancéééé!!");
+//        Log.i("ResultFragment","lancéééé!!");
         View root = null;
-        root = inflater.inflate(R.layout.result_fragment, container, false);
-
-        mRecyclerView = root.findViewById(R.id.recyclerview_joueurs);
-        resultTW = root.findViewById(R.id.result_tw);
-        new FirebaseDatabaseHelper().readJoueurs(new FirebaseDatabaseHelper.DataStatus() {
-//            mRecyclerView =  findViewById(R.id.recyclerview_joueurs);
-            @Override
-            public void DataIsLoaded(){
-            }
-
-            @Override
-            public void DataIsInserted(List<Player> joueurs, List<String> keys) {
-                    Log.i("RESULTGAME",""+joueurs.size());
-                new RecyclerView_Config().setConfig(mRecyclerView,getContext(),
-                        joueurs, keys);
-                if(countJoueurs < joueurs.size()){
-                    countJoueurs = joueurs.size();
-                    resultGagnant = GameControler.gagnant(joueurs, resultTW);
-
-                    resultTW.setText(resultTW.getText()+"\n avec "+countJoueurs+" joueurs");
-                }
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });
-// This callback will only be called when MyFragment is at least Started.
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                Intent i1 = new Intent(getContext(), MainAppActivity.class);
-                i1.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                getContext().startActivity(i1);
-                getActivity().finish();
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-
-        // The callback can be enabled or disabled here or in handleOnBackPressed()
+//        root = inflater.inflate(R.layout.result_fragment, container, false);
+//
+//        mRecyclerView = root.findViewById(R.id.recyclerview_joueurs);
+//        resultTW = root.findViewById(R.id.result_tw);
+//        new FirebaseDatabaseHelper().readNews(new FirebaseDatabaseHelper.DataStatus() {
+////            mRecyclerView =  findViewById(R.id.recyclerview_joueurs);
+//            @Override
+//            public void DataIsLoaded(){
+//            }
+//
+//            @Override
+//            public void DataIsInserted(List<Player> joueurs, List<String> keys) {
+//                    Log.i("RESULTGAME",""+joueurs.size());
+//                new RecyclerView_Config().setConfig(mRecyclerView,getContext(),
+//                        joueurs, keys);
+//                if(countJoueurs < joueurs.size()){
+//                    countJoueurs = joueurs.size();
+//                    resultGagnant = GameControler.gagnant(joueurs, resultTW);
+//
+//                    resultTW.setText(resultTW.getText()+"\n avec "+countJoueurs+" joueurs");
+//                }
+//            }
+//
+//            @Override
+//            public void DataIsUpdated() {
+//
+//            }
+//
+//            @Override
+//            public void DataIsDeleted() {
+//
+//            }
+//        });
+//// This callback will only be called when MyFragment is at least Started.
+//        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                Intent i1 = new Intent(getContext(), MainAppActivity.class);
+//                i1.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                getContext().startActivity(i1);
+//                getActivity().finish();
+//            }
+//        };
+//        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+//
+//        // The callback can be enabled or disabled here or in handleOnBackPressed()
         return root;
 
     }

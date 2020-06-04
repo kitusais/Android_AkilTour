@@ -2,17 +2,10 @@ package com.kitusais.akiltourv2.dao;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.kitusais.akiltourv2.MainActivity;
 import com.kitusais.akiltourv2.model.Player;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,10 +17,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 
 import static com.kitusais.akiltourv2.MainActivity.baseUrl;
-import static com.kitusais.akiltourv2.MainActivity.numRandomGame;
 
 public class GetGameDAO extends AsyncTask<String, Void, String> {
 

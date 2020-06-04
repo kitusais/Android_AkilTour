@@ -6,6 +6,11 @@
     app:startDestination="@+id/nav_gallery">
 
     <fragment
+        android:id="@+id/nav_news"
+        android:name="com.kitusais.akiltourv2.ui.news.NewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.kitusais.akiltourv2.ui.Calendrier.HomeFragment"
         android:label="@string/menu_home"

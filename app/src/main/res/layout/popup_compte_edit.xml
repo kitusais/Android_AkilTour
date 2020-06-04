@@ -8,12 +8,14 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content"
         android:text="uhyu"
         android:textAlignment="center"/>
-
+<RelativeLayout
+    android:id="@+id/popoup_compte_edit_valueBlock"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <TextView
         android:id="@+id/popoup_compte_edit_field"
         android:layout_width="wrap_content"
         android:text="test"
-        android:layout_below="@id/popoup_compte_edit_title"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/popoup_compte_edit_value"
@@ -21,11 +23,44 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content"
         android:hint="un"
         android:layout_toRightOf="@id/popoup_compte_edit_field"/>
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/popoup_compte_edit_confirmBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@id/popoup_compte_edit_valueBlock">
+        <TextView
+            android:id="@+id/popoup_compte_edit_field_comfirm"
+            android:layout_width="wrap_content"
+            android:text="confirmation"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/popoup_compte_edit_value_confirme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="un"
+            android:layout_toRightOf="@id/popoup_compte_edit_field_comfirm"/>
+        <TextView
+            android:id="@+id/popoup_compte_edit_field_ancien"
+            android:layout_width="wrap_content"
+            android:text="ancien password"
+            android:layout_below="@id/popoup_compte_edit_value_confirme"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/popoup_compte_edit_value_ancien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="un"
+            android:layout_below="@id/popoup_compte_edit_value_confirme"
+            android:layout_toRightOf="@id/popoup_compte_edit_field_comfirm"/>
+    </RelativeLayout>
     <Button
         android:id="@+id/popoup_compte_edit_valider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valider"
-        android:layout_below="@id/popoup_compte_edit_value"/>
+        android:layout_below="@id/popoup_compte_edit_confirmBlock"/>
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -25,7 +26,7 @@ public class ToolsFragment extends Fragment {
     private ToolsViewModel toolsViewModel;
     private Button logOutButton;
     private Context context;
-    private TextView usernameTv;
+    private TextView usernameTv,  confirmTv;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
@@ -45,6 +46,13 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AccountController.popupEdit(context, "Username");
+            }
+        });
+        confirmTv = root.findViewById(R.id.compte_pass);
+        confirmTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountController.popupEdit(context, "Password");
             }
         });
         logOutButton = root.findViewById(R.id.logOutButton);

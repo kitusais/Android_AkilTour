@@ -16,6 +16,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.kitusais.akiltourv2.R;
 import com.kitusais.akiltourv2.controler.CalendarController;
 import com.kitusais.akiltourv2.model.ImportedEvent;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

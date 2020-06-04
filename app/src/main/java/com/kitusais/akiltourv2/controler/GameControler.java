@@ -1,7 +1,6 @@
 package com.kitusais.akiltourv2.controler;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 //import com.google.firebase.database.DatabaseReference;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.kitusais.akiltourv2.model.Player;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
